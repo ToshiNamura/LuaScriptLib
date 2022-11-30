@@ -121,6 +121,7 @@ extern const char lua_ident[];
 /*
 ** state manipulation
 */
+
 LUA_API lua_State* lua_newstate (lua_Alloc f, void *ud);
 
 LUA_API void       lua_close (lua_State *L);
@@ -136,6 +137,7 @@ LUA_API lua_Number lua_version (lua_State *L);
 /*
 ** basic stack manipulation
 */
+
 LUA_API int   lua_absindex (lua_State *L, int idx);
 
 LUA_API int   lua_gettop (lua_State *L);
@@ -220,6 +222,7 @@ LUA_API int   lua_compare (lua_State *L, int idx1, int idx2, int op);
 /*
 ** push functions (C -> stack)
 */
+
 LUA_API void        lua_pushnil (lua_State *L);
 
 LUA_API void        lua_pushnumber (lua_State *L, lua_Number n);
@@ -245,6 +248,7 @@ LUA_API int   lua_pushthread (lua_State *L);
 /*
 ** get functions (Lua -> stack)
 */
+
 LUA_API int lua_getglobal (lua_State *L, const char *name);
 
 LUA_API int lua_gettable (lua_State *L, int idx);
@@ -270,6 +274,7 @@ LUA_API int  lua_getiuservalue (lua_State *L, int idx, int n);
 /*
 ** set functions (stack -> Lua)
 */
+
 LUA_API void  lua_setglobal (lua_State *L, const char *name);
 
 LUA_API void  lua_settable (lua_State *L, int idx);
@@ -278,28 +283,42 @@ LUA_API void  lua_setfield (lua_State *L, int idx, const char *k);
 
 LUA_API void  lua_seti (lua_State *L, int idx, lua_Integer n);
 
-LUA_API void  lua_rawset (lua_State *L, int idx);
+LUA_API void  lua_rawset(lua_State *L, int idx);
 
-LUA_API void  lua_rawseti (lua_State *L, int idx, lua_Integer n);
+LUA_API void  lua_rawseti(lua_State *L, int idx, lua_Integer n);
 
-LUA_API void  lua_rawsetp (lua_State *L, int idx, const void *p);
+LUA_API void  lua_rawsetp(lua_State *L, int idx, const void *p);
 
-LUA_API int   lua_setmetatable (lua_State *L, int objindex);
+LUA_API int   lua_setmetatable(lua_State *L, int objindex);
 
-LUA_API int   lua_setiuservalue (lua_State *L, int idx, int n);
+LUA_API int   lua_setiuservalue(lua_State *L, int idx, int n);
 
 /*
 ** 'load' and 'call' functions (load and run Lua code)
 */
-LUA_API void  lua_callk (lua_State *L, int nargs, int nresults, lua_KContext ctx, lua_KFunction k);
-#define lua_call(L,n,r)		lua_callk(L, (n), (r), 0, NULL)
+LUA_API void  lua_callk(lua_State *L, int nargs, int nresults, lua_KContext ctx, lua_KFunction k);
 
-LUA_API int   lua_pcallk (lua_State *L, int nargs, int nresults, int errfunc, lua_KContext ctx, lua_KFunction k);
+#if defined(LUA_UNUSE_DEFINE_VERSION)
+static inline void lua_call(lua_State* L, int nargs, int nresults) {
+	lua_callk(L, nargs, nresults, 0, NULL);
+}
+#else
+#define lua_call(L,n,r)   lua_callk(L, (n), (r), 0, NULL)
+#endif // defined(LUA_UNUSE_DEFINE_VERSION)
+
+LUA_API int   lua_pcallk(lua_State *L, int nargs, int nresults, int errfunc, lua_KContext ctx, lua_KFunction k);
+
+#if defined(LUA_UNUSE_DEFINE_VERSION)
+static inline auto lua_pcall(lua_State* L, int nargs, int nresults, int errfunc) {
+	return lua_pcallk(L, nargs, nresults, errfunc, 0, NULL);
+}
+#else
 #define lua_pcall(L,n,r,f)	lua_pcallk(L, (n), (r), (f), 0, NULL)
+#endif // defined(LUA_UNUSE_DEFINE_VERSION)
 
-LUA_API int   lua_load (lua_State *L, lua_Reader reader, void *dt, const char *chunkname, const char *mode);
+LUA_API int   lua_load(lua_State *L, lua_Reader reader, void *dt, const char *chunkname, const char *mode);
 
-LUA_API int lua_dump (lua_State *L, lua_Writer writer, void *data, int strip);
+LUA_API int lua_dump(lua_State *L, lua_Writer writer, void *data, int strip);
 
 /*
 ** coroutine functions
@@ -312,7 +331,13 @@ LUA_API int  lua_status     (lua_State *L);
 
 LUA_API int lua_isyieldable (lua_State *L);
 
+#if defined(LUA_UNUSE_DEFINE_VERSION)
+static inline auto lua_yield(lua_State* L, int nresults) {
+	return lua_yieldk(L, nresults, 0, NULL);
+}
+#else
 #define lua_yield(L,n)		lua_yieldk(L, (n), 0, NULL)
+#endif // defined(LUA_UNUSE_DEFINE_VERSION)
 
 /*
 ** Warning-related functions
@@ -365,47 +390,113 @@ LUA_API void  lua_toclose (lua_State *L, int idx);
 ** ===============================================================
 */
 
-#define lua_getextraspace(L)	((void *)((char *)(L) - LUA_EXTRASPACE))
+#if defined(LUA_UNUSE_DEFINE_VERSION)
+static inline auto lua_getextraspace(lua_State* L) {
+	return ((void*)((char*)(L)-LUA_EXTRASPACE));
+}
 
-#define lua_tonumber(L,i)	lua_tonumberx(L,(i),NULL)
+static inline auto lua_tonumber(lua_State* L, int idx) {
+	return lua_tonumberx(L, idx, NULL);
+}
 
-#define lua_tointeger(L,i)	lua_tointegerx(L,(i),NULL)
+static inline auto lua_tointeger(lua_State* L, int idx) {
+	return lua_tointegerx(L, idx, NULL);
+}
 
-#define lua_pop(L,n)		lua_settop(L, -(n)-1)
+static inline void lua_pop(lua_State* L, int idx) {
+	lua_settop(L, -(idx)-1);
+}
 
-#define lua_newtable(L)		lua_createtable(L, 0, 0)
+static inline void lua_newtable(lua_State* L) {
+	lua_createtable(L, 0, 0);
+}
 
+static inline void lua_pushcfunction(lua_State* L, lua_CFunction fn) {
+	lua_pushcclosure(L, fn, 0);
+}
+
+static inline void lua_register(lua_State* L, const char* name, lua_CFunction fn) {
+	(lua_pushcfunction(L, fn), lua_setglobal(L, name));
+}
+
+static inline auto lua_isfunction(lua_State* L, int idx) {
+	return (lua_type(L, idx) == LUA_TFUNCTION);
+}
+
+static inline auto lua_istable(lua_State* L, int idx) {
+	return (lua_type(L, idx) == LUA_TTABLE);
+}
+
+static inline auto lua_islightuserdata(lua_State* L, int idx) {
+	return (lua_type(L, idx) == LUA_TLIGHTUSERDATA);
+}
+
+static inline auto lua_isnil(lua_State* L, int idx) {
+	return (lua_type(L, idx) == LUA_TNIL);
+}
+
+static inline auto lua_isboolean(lua_State* L, int idx) {
+	return (lua_type(L, idx) == LUA_TBOOLEAN);
+}
+
+static inline auto lua_isthread(lua_State* L, int idx) {
+	return (lua_type(L, idx) == LUA_TTHREAD);
+}
+
+static inline auto lua_isnone(lua_State* L, int idx) {
+	return (lua_type(L, idx) == LUA_TNONE);
+}
+
+static inline auto lua_isnoneornil(lua_State* L, int idx) {
+	return (lua_type(L, idx) <= 0);
+}
+
+static inline auto lua_pushliteral(lua_State* L, const char* s) {
+	return lua_pushstring(L, s);
+}
+
+static inline auto lua_pushglobaltable(lua_State* L) {
+	return ((void)lua_rawgeti(L, LUA_REGISTRYINDEX, LUA_RIDX_GLOBALS));
+}
+
+static inline auto lua_tostring(lua_State* L, int idx) {
+	return lua_tolstring(L, idx, NULL);
+}
+
+static inline void lua_insert(lua_State* L, int idx) {
+	lua_rotate(L, idx, 1);
+}
+
+static inline void lua_remove(lua_State* L, int idx) {
+	(lua_rotate(L, idx, -1), lua_pop(L, 1));
+}
+
+static inline void lua_replace(lua_State* L, int idx) {
+	(lua_copy(L, -1, idx), lua_pop(L, 1));
+}
+#else
+#define lua_getextraspace(L) ((void *)((char *)(L) - LUA_EXTRASPACE))
+#define lua_tonumber(L,i) lua_tonumberx(L,(i),NULL)
+#define lua_tointeger(L,i) lua_tointegerx(L,(i),NULL)
+#define lua_pop(L,n) lua_settop(L, -(n)-1)
+#define lua_newtable(L) lua_createtable(L, 0, 0)
+#define lua_pushcfunction(L,f) lua_pushcclosure(L, (f), 0)
 #define lua_register(L,n,f) (lua_pushcfunction(L, (f)), lua_setglobal(L, (n)))
-
-#define lua_pushcfunction(L,f)	lua_pushcclosure(L, (f), 0)
-
-#define lua_isfunction(L,n)	(lua_type(L, (n)) == LUA_TFUNCTION)
-
-#define lua_istable(L,n)	(lua_type(L, (n)) == LUA_TTABLE)
-
-#define lua_islightuserdata(L,n)	(lua_type(L, (n)) == LUA_TLIGHTUSERDATA)
-
-#define lua_isnil(L,n)		(lua_type(L, (n)) == LUA_TNIL)
-
-#define lua_isboolean(L,n)	(lua_type(L, (n)) == LUA_TBOOLEAN)
-
-#define lua_isthread(L,n)	(lua_type(L, (n)) == LUA_TTHREAD)
-
-#define lua_isnone(L,n)		(lua_type(L, (n)) == LUA_TNONE)
-
-#define lua_isnoneornil(L, n)	(lua_type(L, (n)) <= 0)
-
-#define lua_pushliteral(L, s)	lua_pushstring(L, "" s)
-
+#define lua_isfunction(L,n) (lua_type(L, (n)) == LUA_TFUNCTION)
+#define lua_istable(L,n) (lua_type(L, (n)) == LUA_TTABLE)
+#define lua_islightuserdata(L,n) (lua_type(L, (n)) == LUA_TLIGHTUSERDATA)
+#define lua_isnil(L,n) (lua_type(L, (n)) == LUA_TNIL)
+#define lua_isboolean(L,n) (lua_type(L, (n)) == LUA_TBOOLEAN)
+#define lua_isthread(L,n) (lua_type(L, (n)) == LUA_TTHREAD)
+#define lua_isnone(L,n) (lua_type(L, (n)) == LUA_TNONE)
+#define lua_isnoneornil(L, n) (lua_type(L, (n)) <= 0)
+#define lua_pushliteral(L, s) lua_pushstring(L, "" s)
 #define lua_pushglobaltable(L) ((void)lua_rawgeti(L, LUA_REGISTRYINDEX, LUA_RIDX_GLOBALS))
-
-#define lua_tostring(L,i)	lua_tolstring(L, (i), NULL)
-
-#define lua_insert(L,idx)	lua_rotate(L, (idx), 1)
-
-#define lua_remove(L,idx)	(lua_rotate(L, (idx), -1), lua_pop(L, 1))
-
-#define lua_replace(L,idx)	(lua_copy(L, -1, (idx)), lua_pop(L, 1))
+#define lua_tostring(L,i) lua_tolstring(L, (i), NULL)
+#define lua_insert(L,idx) lua_rotate(L, (idx), 1)
+#define lua_remove(L,idx) (lua_rotate(L, (idx), -1), lua_pop(L, 1))
+#define lua_replace(L,idx) (lua_copy(L, -1, (idx)), lua_pop(L, 1))
+#endif // defined(LUA_UNUSE_DEFINE_VERSION)
 
 /* }============================================================== */
 /*
@@ -414,16 +505,43 @@ LUA_API void  lua_toclose (lua_State *L, int idx);
 ** ===============================================================
 */
 #if defined(LUA_COMPAT_APIINTCASTS)
+#  if defined(LUA_UNUSE_DEFINE_VERSION)
+static inline void lua_pushunsigned(lua_State* L, lua_Integer n) {
+	lua_pushinteger(L, (lua_Integer)(n));
+}
 
-#define lua_pushunsigned(L,n)	lua_pushinteger(L, (lua_Integer)(n))
-#define lua_tounsignedx(L,i,is)	((lua_Unsigned)lua_tointegerx(L,i,is))
+static inline auto lua_tounsignedx(lua_State* L, int idx, int* pisnum) {
+	return ((lua_Unsigned)lua_tointegerx(L, idx, pisnum));
+}
+
+static inline auto lua_tounsigned(lua_State* L, int idx) {
+	return lua_tounsignedx(L, idx, NULL);
+}
+#  else
+#define lua_pushunsigned(L,n) lua_pushinteger(L, (lua_Integer)(n))
+#define lua_tounsignedx(L,i,is) ((lua_Unsigned)lua_tointegerx(L,i,is))
 #define lua_tounsigned(L,i)	lua_tounsignedx(L,(i),NULL)
-
+#  endif
 #endif
 
+#if defined(LUA_UNUSE_DEFINE_VERSION)
+static inline auto lua_newuserdata(lua_State* L, size_t size) {
+	return lua_newuserdatauv(L, size, 1);
+}
+
+static inline auto lua_getuservalue(lua_State* L, int idx) {
+	return lua_getiuservalue(L, idx, 1);
+}
+
+static inline auto lua_setuservalue(lua_State* L, int idx) {
+	return lua_setiuservalue(L, idx, 1);
+}
+
+#else
 #define lua_newuserdata(L,s)    lua_newuserdatauv(L,s,1)
 #define lua_getuservalue(L,idx) lua_getiuservalue(L,idx,1)
 #define lua_setuservalue(L,idx) lua_setiuservalue(L,idx,1)
+#endif // defined(LUA_UNUSE_DEFINE_VERSION)
 
 #define LUA_NUMTAGS LUA_NUMTYPES
 
@@ -504,6 +622,8 @@ struct lua_Debug {
 };
 
 LUA_API void lua_closeslot(lua_State* L, int idx);
+
+
 
 /* }====================================================================== */
 /******************************************************************************

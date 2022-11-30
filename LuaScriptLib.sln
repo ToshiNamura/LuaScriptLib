@@ -5,17 +5,14 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuaScriptLib", "LuaScriptLib.vcxproj", "{83EE9B66-9F7B-4C5D-A131-72778A0857A5}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TesterLua", "tester\TesterLua\TesterLua.vcxproj", "{784F88FD-AAA5-4154-8932-4540314DC50F}"
-	ProjectSection(ProjectDependencies) = postProject
-		{83EE9B66-9F7B-4C5D-A131-72778A0857A5} = {83EE9B66-9F7B-4C5D-A131-72778A0857A5}
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{C78A47ED-BB16-4F71-9E79-F216571352C5}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TesterLua", "TesterLua\TesterLua.vcxproj", "{784F88FD-AAA5-4154-8932-4540314DC50F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
