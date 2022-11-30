@@ -361,3 +361,25 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/build/Lua54.lib
+/build/Lua54.exp
+/build/Lua54.dll
+/build/Lua54_Debug.dll
+/build/Lua54_Debug.exp
+/build/Lua54.exp
+/build/Lua54.lib
+/build/Lua54_Debug.dll
+/build/Lua54_Debug.exp
+/build/Lua54_Debug.lib
+/build/Lua54x32.dll
+/build/Lua54x32.exp
+/build/Lua54x32.lib
+/build/Lua54x32_Debug.dll
+/build/Lua54x32_Debug.exp
+/build/Lua54x32_Debug.lib
+/tester/TesterLua/Debug32.exe
+/tester/TesterLua/Debug64.exe
+/tester/TesterLua/Release32.exe
+/tester/TesterLua/Release64.exe
+/tester/TesterLua/.vscode/settings.json
+/.gitattributes
