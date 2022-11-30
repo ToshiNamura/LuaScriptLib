@@ -8,7 +8,11 @@ int main()
 {
 
     lua_State* L = luaL_newstate();
-    luaL_dofile(L, "script.lua");
+    if (luaL_loadfile(L, "script.lua"))
+    {
+        std::cout << "[Lua] File 'script.lua': not found!\n";
+        return EXIT_FAILURE;
+    }
     luaL_openlibs(L);
     lua_pcall(L, 0, 0, 0);
     luabridge::LuaRef s = luabridge::getGlobal(L, "testString");

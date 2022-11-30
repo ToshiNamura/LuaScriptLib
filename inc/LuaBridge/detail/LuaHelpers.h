@@ -15,6 +15,9 @@
 #include <type_traits>
 #include <utility>
 
+#undef min
+#undef max
+
 namespace luabridge {
 
 /**

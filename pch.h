@@ -6,5 +6,6 @@
 #include "inc/lua.h"
 #include "inc/lauxlib.h"
 #include "inc/lualib.h"
+#include "inc/LuaBridge/LuaBridge.h"
 
 #endif //PCH_H
