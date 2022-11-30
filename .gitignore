@@ -383,3 +383,8 @@ FodyWeavers.xsd
 /tester/TesterLua/Release64.exe
 /tester/TesterLua/.vscode/settings.json
 /.gitattributes
+/TesterLua/Debug32.exe
+/TesterLua/Debug64.exe
+/TesterLua/Release32.exe
+/TesterLua/Release64.exe
+/TesterLua/.vscode/settings.json
