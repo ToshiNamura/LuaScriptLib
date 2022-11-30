@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LuaScriptLib", "LuaScriptLib.vcxproj", "{83EE9B66-9F7B-4C5D-A131-72778A0857A5}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TesterLua", "tester\TesterLua\TesterLua.vcxproj", "{784F88FD-AAA5-4154-8932-4540314DC50F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{83EE9B66-9F7B-4C5D-A131-72778A0857A5} = {83EE9B66-9F7B-4C5D-A131-72778A0857A5}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{83EE9B66-9F7B-4C5D-A131-72778A0857A5}.Debug|x64.ActiveCfg = Debug|x64
+		{83EE9B66-9F7B-4C5D-A131-72778A0857A5}.Debug|x64.Build.0 = Debug|x64
+		{83EE9B66-9F7B-4C5D-A131-72778A0857A5}.Debug|x86.ActiveCfg = Debug|Win32
+		{83EE9B66-9F7B-4C5D-A131-72778A0857A5}.Debug|x86.Build.0 = Debug|Win32
+		{83EE9B66-9F7B-4C5D-A131-72778A0857A5}.Release|x64.ActiveCfg = Release|x64
+		{83EE9B66-9F7B-4C5D-A131-72778A0857A5}.Release|x64.Build.0 = Release|x64
+		{83EE9B66-9F7B-4C5D-A131-72778A0857A5}.Release|x86.ActiveCfg = Release|Win32
+		{83EE9B66-9F7B-4C5D-A131-72778A0857A5}.Release|x86.Build.0 = Release|Win32
+		{784F88FD-AAA5-4154-8932-4540314DC50F}.Debug|x64.ActiveCfg = Debug|x64
+		{784F88FD-AAA5-4154-8932-4540314DC50F}.Debug|x64.Build.0 = Debug|x64
+		{784F88FD-AAA5-4154-8932-4540314DC50F}.Debug|x86.ActiveCfg = Debug|Win32
+		{784F88FD-AAA5-4154-8932-4540314DC50F}.Debug|x86.Build.0 = Debug|Win32
+		{784F88FD-AAA5-4154-8932-4540314DC50F}.Release|x64.ActiveCfg = Release|x64
+		{784F88FD-AAA5-4154-8932-4540314DC50F}.Release|x64.Build.0 = Release|x64
+		{784F88FD-AAA5-4154-8932-4540314DC50F}.Release|x86.ActiveCfg = Release|Win32
+		{784F88FD-AAA5-4154-8932-4540314DC50F}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D7DC2B1A-C43A-4652-BE47-3599C75281FA}
+	EndGlobalSection
+EndGlobal
