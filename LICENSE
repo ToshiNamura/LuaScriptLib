@@ -1,6 +1,18 @@
 MIT License
 
-Copyright (c) [year] [fullname]
+Copyright (c) 2022, Toshi Namura [LuaScriptLib]
+
+	[Lua.org]
+	Copyright © 1994–2021 Lua.org, PUC - Rio.
+
+	[LuaBridge3]
+	LuaBridge3 is published under the terms of the MIT License
+	http ://www.opensource.org/licenses/mit-license.html
+	* Copyright 2020, Lucio Asnaghi
+	* Copyright 2019, Dmitry Tarakanov
+	* Copyright 2012, Vinnie Falco
+	* Copyright 2008, Nigel Atkinson
+	* Copyright 2007, Nathan Reed
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
