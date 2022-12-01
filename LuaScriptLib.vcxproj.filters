@@ -23,10 +23,10 @@
       <UniqueIdentifier>{8175477d-fb8b-42fd-852a-41df4e463517}</UniqueIdentifier>
     </Filter>
     <Filter Include="Файлы заголовков\lib\LuaBridge">
-      <UniqueIdentifier>{7e714c28-91fb-4d45-9dbf-3741cde654e4}</UniqueIdentifier>
+      <UniqueIdentifier>{9349f923-2634-4f54-b216-3443a4010667}</UniqueIdentifier>
     </Filter>
     <Filter Include="Файлы заголовков\lib\LuaBridge\detail">
-      <UniqueIdentifier>{0a2b3222-4719-44d7-aea9-1c6e396b17d5}</UniqueIdentifier>
+      <UniqueIdentifier>{6d9a2d95-c53a-4fb5-a8aa-6a1d2735a1bb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +117,9 @@
     <ClInclude Include="h\ldebug.h">
       <Filter>Файлы ресурсов\h</Filter>
     </ClInclude>
+    <ClInclude Include="inc\LuaClass.h">
+      <Filter>Файлы заголовков\lib</Filter>
+    </ClInclude>
     <ClInclude Include="inc\LuaBridge\Array.h">
       <Filter>Файлы заголовков\lib\LuaBridge</Filter>
     </ClInclude>
@@ -129,10 +132,13 @@
     <ClInclude Include="inc\LuaBridge\Map.h">
       <Filter>Файлы заголовков\lib\LuaBridge</Filter>
     </ClInclude>
+    <ClInclude Include="inc\LuaBridge\Optional.h">
+      <Filter>Файлы заголовков\lib\LuaBridge</Filter>
+    </ClInclude>
     <ClInclude Include="inc\LuaBridge\RefCountedObject.h">
       <Filter>Файлы заголовков\lib\LuaBridge</Filter>
     </ClInclude>
-    <ClInclude Include="inc\LuaBridge\Set.h">
+    <ClInclude Include="inc\LuaBridge\RefCountedPtr.h">
       <Filter>Файлы заголовков\lib\LuaBridge</Filter>
     </ClInclude>
     <ClInclude Include="inc\LuaBridge\UnorderedMap.h">
@@ -150,19 +156,13 @@
     <ClInclude Include="inc\LuaBridge\detail\Config.h">
       <Filter>Файлы заголовков\lib\LuaBridge\detail</Filter>
     </ClInclude>
-    <ClInclude Include="inc\LuaBridge\detail\Dump.h">
+    <ClInclude Include="inc\LuaBridge\detail\Constructor.h">
       <Filter>Файлы заголовков\lib\LuaBridge\detail</Filter>
     </ClInclude>
-    <ClInclude Include="inc\LuaBridge\detail\Errors.h">
-      <Filter>Файлы заголовков\lib\LuaBridge\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\LuaBridge\detail\Expected.h">
+    <ClInclude Include="inc\LuaBridge\detail\dump.h">
       <Filter>Файлы заголовков\lib\LuaBridge\detail</Filter>
     </ClInclude>
     <ClInclude Include="inc\LuaBridge\detail\FuncTraits.h">
-      <Filter>Файлы заголовков\lib\LuaBridge\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\LuaBridge\detail\Invoke.h">
       <Filter>Файлы заголовков\lib\LuaBridge\detail</Filter>
     </ClInclude>
     <ClInclude Include="inc\LuaBridge\detail\Iterator.h">
@@ -180,19 +180,13 @@
     <ClInclude Include="inc\LuaBridge\detail\Namespace.h">
       <Filter>Файлы заголовков\lib\LuaBridge\detail</Filter>
     </ClInclude>
-    <ClInclude Include="inc\LuaBridge\detail\Overload.h">
-      <Filter>Файлы заголовков\lib\LuaBridge\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\LuaBridge\detail\Result.h">
-      <Filter>Файлы заголовков\lib\LuaBridge\detail</Filter>
-    </ClInclude>
-    <ClInclude Include="inc\LuaBridge\detail\ScopeGuard.h">
-      <Filter>Файлы заголовков\lib\LuaBridge\detail</Filter>
-    </ClInclude>
     <ClInclude Include="inc\LuaBridge\detail\Security.h">
       <Filter>Файлы заголовков\lib\LuaBridge\detail</Filter>
     </ClInclude>
     <ClInclude Include="inc\LuaBridge\detail\Stack.h">
+      <Filter>Файлы заголовков\lib\LuaBridge\detail</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\LuaBridge\detail\TypeList.h">
       <Filter>Файлы заголовков\lib\LuaBridge\detail</Filter>
     </ClInclude>
     <ClInclude Include="inc\LuaBridge\detail\TypeTraits.h">

@@ -90,7 +90,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>LUA_UNUSE_DEFINE_VERSION;WIN32;_DEBUG;LUASCRIPTLIB_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;LUASCRIPTLIB_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -111,7 +111,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>LUA_UNUSE_DEFINE_VERSION;WIN32;NDEBUG;LUASCRIPTLIB_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;LUASCRIPTLIB_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -132,7 +132,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>LUA_UNUSE_DEFINE_VERSION;_DEBUG;LUASCRIPTLIB_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;LUASCRIPTLIB_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -153,7 +153,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>LUA_UNUSE_DEFINE_VERSION;NDEBUG;LUASCRIPTLIB_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;LUASCRIPTLIB_EXPORTS;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
@@ -201,30 +201,28 @@
     <ClInclude Include="inc\LuaBridge\detail\CFunctions.h" />
     <ClInclude Include="inc\LuaBridge\detail\ClassInfo.h" />
     <ClInclude Include="inc\LuaBridge\detail\Config.h" />
-    <ClInclude Include="inc\LuaBridge\detail\Dump.h" />
-    <ClInclude Include="inc\LuaBridge\detail\Errors.h" />
-    <ClInclude Include="inc\LuaBridge\detail\Expected.h" />
+    <ClInclude Include="inc\LuaBridge\detail\Constructor.h" />
+    <ClInclude Include="inc\LuaBridge\detail\dump.h" />
     <ClInclude Include="inc\LuaBridge\detail\FuncTraits.h" />
-    <ClInclude Include="inc\LuaBridge\detail\Invoke.h" />
     <ClInclude Include="inc\LuaBridge\detail\Iterator.h" />
     <ClInclude Include="inc\LuaBridge\detail\LuaException.h" />
     <ClInclude Include="inc\LuaBridge\detail\LuaHelpers.h" />
     <ClInclude Include="inc\LuaBridge\detail\LuaRef.h" />
     <ClInclude Include="inc\LuaBridge\detail\Namespace.h" />
-    <ClInclude Include="inc\LuaBridge\detail\Overload.h" />
-    <ClInclude Include="inc\LuaBridge\detail\Result.h" />
-    <ClInclude Include="inc\LuaBridge\detail\ScopeGuard.h" />
     <ClInclude Include="inc\LuaBridge\detail\Security.h" />
     <ClInclude Include="inc\LuaBridge\detail\Stack.h" />
+    <ClInclude Include="inc\LuaBridge\detail\TypeList.h" />
     <ClInclude Include="inc\LuaBridge\detail\TypeTraits.h" />
     <ClInclude Include="inc\LuaBridge\detail\Userdata.h" />
     <ClInclude Include="inc\LuaBridge\List.h" />
     <ClInclude Include="inc\LuaBridge\LuaBridge.h" />
     <ClInclude Include="inc\LuaBridge\Map.h" />
+    <ClInclude Include="inc\LuaBridge\Optional.h" />
     <ClInclude Include="inc\LuaBridge\RefCountedObject.h" />
-    <ClInclude Include="inc\LuaBridge\Set.h" />
+    <ClInclude Include="inc\LuaBridge\RefCountedPtr.h" />
     <ClInclude Include="inc\LuaBridge\UnorderedMap.h" />
     <ClInclude Include="inc\LuaBridge\Vector.h" />
+    <ClInclude Include="inc\LuaClass.h" />
     <ClInclude Include="inc\luaconf.h" />
     <ClInclude Include="inc\lualib.h" />
     <ClInclude Include="pch.h" />
